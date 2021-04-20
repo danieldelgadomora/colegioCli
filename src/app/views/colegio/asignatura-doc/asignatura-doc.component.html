@@ -1,0 +1,158 @@
+<p-panel header="Asignaturas docente">
+	<div class="row col-sm-12">
+		<form [formGroup]="formProfesor" class="form-vertical">
+				<div class="col-sm-12">
+          <label>Profesor</label>
+          <select class="form-control letrainput" formControlName="profesor" (change)="selectProfesor()" >
+            <option [value]='0'>-- Seleccione un profesor --</option>
+            <option *ngFor="let item of profesores" [ngValue]="item.id">
+              {{item.nombre}}
+            </option>
+          </select>
+        </div>
+		</form>
+		<div class="col-sm-12">
+        <br>
+        <br>
+        <div *ngIf="asignaturas" class="pull-right">
+          <button class="btn btnSave ng-binding" (click)="modalAddAsignatura(addAsignatura)">
+            <i class="fa fa-plus-circle iconAdd" aria-hidden="true"></i>
+            Adicionar asignatura
+          </button>
+        </div>
+        <br>
+        <p-table #dt [value]="asignaturas" [responsive]="true" dataKey="ID_ASIGNATURA" *ngIf="asignaturas">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th style="width: 2em"></th>
+              <th style="text-align: center;" class="letraHeaderTab">Asignatura</th>
+              <th style="text-align: center;" class="letraHeaderTab">Grupo</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-asignatura let-expanded="expanded">
+            <tr>
+              <td>
+                <a href="#" [pRowToggler]="asignatura">
+                  <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </a>
+              </td>
+              <td>{{asignatura.ASIGNATURA}}</td>
+              <td style="text-align: center;">{{asignatura.CURSO}}</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="rowexpansion" let-rowData2>
+            <tr>
+              <td [attr.colspan]="3">
+                <div class="ui-g ui-fluid" style="font-size:16px;padding:20px"
+                  [@rowExpansionTrigger]="'active'">
+                  <div class="ui-g-12 ui-md-12" style="text-align:center">
+                    <label>Estudiantes matriculados</label>
+                    <div *ngIf="asignaturas" class="pull-right">
+                      <button class="btn btnSave ng-binding" (click)="modalAddMatriculaAnt(addMatriculaAnt,rowData2)">
+                        <i class="fa fa-plus-circle iconAdd" aria-hidden="true"></i>
+                        Matricular estudiante
+                      </button>
+                    </div>
+                    <p-table #dt [value]="rowData2.estMat" [responsive]="true">
+                      <ng-template pTemplate="header">
+                        <tr>
+                          <th style="text-align: center;" class="letraHeaderTab">ESTUDIANTE</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-estudiante let-expanded="expanded">
+                        <tr>
+                          <td class="letraBobyTab" style="text-align: center;">{{estudiante.nombre}}</td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+	</div>
+</p-panel>
+
+
+<ng-template #addAsignatura>
+	<div class="modal-header">
+		<label class="letra">Adicionar asignatura</label>
+	</div>
+  <div class="modal-body">
+    <div class="col-sm-12">
+      <form [formGroup]="formAsignatura" class="form-vertical">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input formControlName="nombre" name="nombre" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label>Curso</label>
+            <select class="form-control letrainput" formControlName="curso" >
+              <option *ngFor="let item of cursos" [ngValue]="item.id">
+                {{item.grado}} - {{item.salon}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-12" *ngIf="msgReq">
+           <p style="color: red;">*Todos los campos son queridos</p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="pull-right">
+      <button type="button" class="btn btnSave" (click)="btnAddAsignatura()">
+        <i class="fa fa-check-circle iconAdd" aria-hidden="true"></i>
+        Adicionar
+      </button>
+      <button type="button" class="btn btnCancel" (click)="modalRef.hide()">
+        <i class="fa fa-times-circle iconCan" aria-hidden="true"></i>
+        Cancelar
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #addMatriculaAnt>
+	<div class="modal-header">
+		<label class="letra">Matricular estudiante</label>
+	</div>
+  <div class="modal-body">
+    <div class="col-sm-12">
+      <form [formGroup]="formMatriAnt" class="form-vertical">
+        <div class="row">
+          <div class="col-sm-6">
+            <label>Estudiante</label>
+            <select class="form-control letrainput" formControlName="estudiante" >
+              <option [value]='0'>-- Seleccione un estudiante --</option>
+              <option *ngFor="let item of estudiantes" [ngValue]="item.ID">
+                {{item.NOMBRE}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="pull-right">
+      <button type="button" class="btn btnSave" (click)="btnAddMatriculaAnt()">
+        <i class="fa fa-check-circle iconAdd" aria-hidden="true"></i>
+        Adicionar
+      </button>
+      <button type="button" class="btn btnCancel" (click)="modalRef.hide()">
+        <i class="fa fa-times-circle iconCan" aria-hidden="true"></i>
+        Cancelar
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+

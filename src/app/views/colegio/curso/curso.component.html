@@ -1,0 +1,72 @@
+<p-panel header="Cursos">
+	<div class="col-sm-12">
+    <div class="pull-right">
+        <button class="btn btnSave ng-binding" (click)="modalAddCurso(addCurso)">
+          <i class="fa fa-plus-circle iconAdd" aria-hidden="true"></i>
+          Adicionar curso
+        </button>
+    </div>
+    <br>
+    <p-table #dt [value]="cursos" [responsive]="true" dataKey="id">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th style="text-align: center;" class="letraHeaderTab">Grado</th>
+          <th style="text-align: center;" class="letraHeaderTab">Salón</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-curso let-expanded="expanded">
+        <tr>
+          <td style="text-align: center;">{{curso.grado}}</td>
+          <td style="text-align: center;">{{curso.salon}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+	</div>
+</p-panel>
+
+<ng-template #addCurso>
+	<div class="modal-header">
+		<label class="letra">Adicionar curso</label>
+	</div>
+  <div class="modal-body">
+    <div class="col-sm-12">
+      <form [formGroup]="formCurso" class="form-vertical">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>Grado</label>
+                <input type="number" formControlName="grado" name="grado" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>Salón</label>
+                <input formControlName="salon" name="salon" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="msgReq">
+           <p style="color: red;">*Todos los campos son queridos</p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="pull-right">
+      <button type="button" class="btn btnSave" (click)="btnAddCurso()">
+        <i class="fa fa-check-circle iconAdd" aria-hidden="true"></i>
+        Adicionar
+      </button>
+      <button type="button" class="btn btnCancel" (click)="modalRef.hide()">
+        <i class="fa fa-times-circle iconCan" aria-hidden="true"></i>
+        Cancelar
+      </button>
+    </div>
+  </div>
+
+
+</ng-template>
+
+

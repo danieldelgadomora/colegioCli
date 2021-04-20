@@ -1,0 +1,69 @@
+<p-panel header="Estudiantes">
+	<div class="col-sm-12">
+    <div class="pull-right">
+        <button class="btn btnSave ng-binding" (click)="modalAddEstudiante(addEstudiante)">
+          <i class="fa fa-plus-circle iconAdd" aria-hidden="true"></i>
+          Adicionar estudiante
+        </button>
+    </div>
+    <br>
+    <p-table #dt [value]="estudiantes" [responsive]="true" dataKey="ID">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th style="text-align: center;" class="letraHeaderTab">Nombre</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-estudiante let-expanded="expanded">
+        <tr>
+          <td style="text-align: center;">{{estudiante.NOMBRE}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+	</div>
+</p-panel>
+
+<ng-template #addEstudiante>
+	<div class="modal-header">
+		<label class="letra">Adicionar estudiante</label>
+	</div>
+  <div class="modal-body">
+    <div class="col-sm-12">
+      <form [formGroup]="formAddEstudiante" class="form-vertical">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input formControlName="nombre" name="nombre" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label>Asignatura</label>
+            <select class="form-control letrainput" formControlName="curso" >
+              <option [value]='0'>-- Seleccione la asignatura --</option>
+              <option *ngFor="let item of asignaturas" [ngValue]="item.ID_ASIGNATURA">
+                {{item.CURSO}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-12" *ngIf="msgReq">
+           <p style="color: red;">*Todos los campos son queridos</p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="pull-right">
+      <button type="button" class="btn btnSave" (click)="btnAddEstudiante()">
+        <i class="fa fa-check-circle iconAdd" aria-hidden="true"></i>
+        Adicionar
+      </button>
+      <button type="button" class="btn btnCancel" (click)="modalRef.hide()">
+        <i class="fa fa-times-circle iconCan" aria-hidden="true"></i>
+        Cancelar
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+

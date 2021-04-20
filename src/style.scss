@@ -1,0 +1,164 @@
+/* You can add global styles to this file, and also import other style files */
+
+$color_verde: unquote('#00b24861');
+$color_rojo: #ec2327;
+$color_naranja: #f2692f;
+$color_letras: #4d4d4d;
+
+.control-label {
+  color: #4d4d4d;
+  font-family: helveticabold !important;
+  font-size: 10pt !important;
+  text-decoration: none;
+  margin-left: 1.2px;
+}
+
+.content {
+  margin-top: 10px !important;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  background-color: #efefef !important;
+  margin-bottom: 30px !important;
+}
+
+.main {
+  margin-top: 30px;
+  background-color: #ffffff;
+  height: auto !important;
+}
+
+.bodycontainer {
+  background-color: #efefef;
+}
+
+.main .container-fluid {
+  height: calc(100% - 82px);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn {
+  display: inline-block !important;
+  padding: 6px 12px !important;
+  margin-bottom: 0 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.42857143 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -ms-touch-action: manipulation !important;
+  touch-action: manipulation !important;
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  background-image: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 4px !important;
+}
+
+.btnbtnSave {
+  background: none;
+  color: $color_letras;
+  font-family: helveticamendium !important;
+  margin-right: 8px;
+}
+
+.btnSave:hover {
+  border: 1px solid $color_verde!important;
+}
+
+.icono-lateral {
+  width: 23px;
+  margin-top: -4px;
+}
+
+.icono-lateral:hover {
+  filter: saturate(200%);
+}
+.btnBodyTb>.icono-lateral:hover {
+  transform: scale(1.2);
+}
+
+.btnCancel {
+  background: none;
+  color: $color_letras;
+  font-family: helveticamendium !important;
+  margin-right: 8px;
+}
+
+.btnCancel:hover {
+  border: 1px solid $color_rojo !important;
+}
+
+.body-form {
+  font-family: helveticamendium !important;
+  font-size: 10pt !important;
+  color: $color_letras !important;
+}
+
+body .ui-inputtext {
+  display: block;
+      width: 100% !important;
+      height: calc(1.5em + 0.75rem + 2px);
+      padding: initial !important;
+      font-size: 10pt !important;
+      font-family: helveticanormal;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #5c6873 !important;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #e4e7ea;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important
+}
+body .ui-autocomplete .ui-autocomplete-input {
+  padding: 5px !important;
+}
+
+body .ui-inputtext:enabled:focus:not(.ui-state-error)
+ {
+  color: #5c6873;
+  background-color: #fff;
+  border-color: #8ad4ee !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(32, 168, 216, 0.25) !important;
+}
+
+body .ui-inputtext:enabled:hover:not(.ui-state-error) {
+  border: 1px solid #e4e7ea;
+  border-radius: 0.25rem;
+}
+
+label{
+  color: $color_letras;
+  font-family: "Helvetica Neue", sans-serif !important;
+}
+
+.iconAdd{
+  color: #008d4c  !important;
+}
+
+.iconCan{
+  color: #d73925  !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+.center {
+
+  width: 50%;
+}
